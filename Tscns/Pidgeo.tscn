@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://7yes3qtr7sle"]
+
+[ext_resource type="Texture2D" uid="uid://cjjopxt8jdhv2" path="res://icon.svg" id="1_fw12v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7enb5"]
+size = Vector2(169.25, 159.76563)
+
+[node name="Pidgeo" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(43, 44)
+shape = SubResource("RectangleShape2D_7enb5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(42.000004, 42)
+scale = Vector2(0.640625, 0.671875)
+texture = ExtResource("1_fw12v")
