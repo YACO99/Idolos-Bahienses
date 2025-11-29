@@ -13,31 +13,93 @@ script = ExtResource("1_ojdui")
 
 [node name="Map" type="Node2D" parent="."]
 
-[node name="Spawn1" type="Node2D" parent="Map"]
-position = Vector2(116, 595)
+[node name="Sprite2D" type="Sprite2D" parent="Map"]
+centered = false
 
-[node name="Spawn2" type="Node2D" parent="Map"]
-position = Vector2(116, 411)
-
-[node name="Cam" type="Camera2D" parent="Map"]
+[node name="Cam" type="Camera2D" parent="."]
 anchor_mode = 0
 limit_enabled = false
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Map"]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 150)
+collision_layer = 3
+collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(640, 0)
 shape = SubResource("RectangleShape2D_ojdui")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Map/StaticBody2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 292)
 shape = SubResource("RectangleShape2D_4m062")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Map/StaticBody2D"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1280, 283)
 shape = SubResource("RectangleShape2D_4m062")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Map/StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(640, 569)
 shape = SubResource("RectangleShape2D_ojdui")
+
+[node name="Spawn1" type="Node2D" parent="."]
+position = Vector2(116, 595)
+
+[node name="Spawn2" type="Node2D" parent="."]
+position = Vector2(116, 433)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Datos" type="Panel" parent="Control"]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Control/Datos"]
+self_modulate = Color(6.7334223, 0, 0, 1)
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+text = "X"
+
+[node name="CrediLabel" type="Label" parent="Control/Datos"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.055
+anchor_top = 0.171
+anchor_right = 0.875
+anchor_bottom = 0.771
+offset_right = 40.0
+offset_bottom = 23.0
+text = "W,A,S,D R,T,Y
+Arrows 1,2,3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Creditos: 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Control/Datos/Button" to="." method="_on_StartButton_pressed"]

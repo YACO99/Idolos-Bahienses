@@ -3,6 +3,8 @@ using System;
 
 public partial class God : Node
 {
+	//elemento God, no se borra, util para que un hijo acceda a algo
+	//ej: Player -> "God.lambda.Main.Creditos--;"
 	public static God Lambda { get; set; }
 	public Main Main;
 
