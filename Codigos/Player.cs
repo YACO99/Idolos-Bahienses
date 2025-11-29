@@ -45,7 +45,8 @@ public partial class Player : CharacterBody2D
 		}
 		else
 		{
-            anim.Play("Quieto");
+			if(FStop == 0)
+				anim.Play("Quieto");
             velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, Speed);
 		}
@@ -62,6 +63,6 @@ public partial class Player : CharacterBody2D
 	public void Damage()
 	{
         anim.Play("Daño");
-		FStop = 0.25;
+		FStop = 0.5;
     }
 }

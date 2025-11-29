@@ -16,7 +16,7 @@ public partial class Main : Node
     public override void _Ready()
     {
         BasePlayer = ResourceLoader.Load<PackedScene>("res://Tscns/Player.tscn");
-        BaseFlock = ResourceLoader.Load<PackedScene>("res://Tscns/Flock.tscn");
+        BaseFlock = ResourceLoader.Load<PackedScene>("res://Tscns/Flock"+1+".tscn");
         Cam = GetNode<Camera2D>("Cam");
         Flecha = Cam.GetNode<Node2D>("Flecha");
         Spawn1 = Cam.GetNode<Node2D>("Spawn1");
@@ -68,8 +68,8 @@ public partial class Main : Node
                     TimeDelay = 0;
                 }
                 var en=GetTree().GetNodesInGroup("enemigo");
-                if (en.Count==0 && TimeDelay==0 && areaNext.Disabled)
-                    TimeDelay =4;
+                if (en.Count==0 && TimeDelay==0 && !boMap)
+                    TimeDelay = 4;
 
             }
             if (P2 == null && Input.IsActionJustPressed("3") && !boMap)
@@ -127,9 +127,7 @@ public partial class Main : Node
                 P2.anim.Play();
             }
             boMap = false;
-            var f=BaseFlock.Instantiate<Node2D>();
-            f.GlobalPosition = Nido.GlobalPosition;
-            AddChild(f);
+            
         }
     }
 
@@ -152,7 +150,9 @@ public partial class Main : Node
                 P2.anim.Pause();
             }
             boMap = true;
-
+            var f = BaseFlock.Instantiate<Node2D>();
+            f.GlobalPosition = Nido.GlobalPosition;
+            CallDeferred(Node.MethodName.AddChild, f);
         }
 
     }

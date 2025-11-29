@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2bww7m8u3cko"]
+[gd_scene load_steps=4 format=3 uid="uid://d2bww7m8u3cko"]
 
+[ext_resource type="Script" uid="uid://bluvlvht00yjq" path="res://Codigos/Pidgeo.gd" id="1_7enb5"]
 [ext_resource type="Texture2D" uid="uid://cjjopxt8jdhv2" path="res://icon.svg" id="1_fw12v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7enb5"]
-size = Vector2(169.25, 159.76563)
+size = Vector2(92, 96)
 
 [node name="Pidgeo" type="Area2D" groups=["enemigo"]]
+script = ExtResource("1_7enb5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(43, 44)
@@ -15,3 +17,5 @@ shape = SubResource("RectangleShape2D_7enb5")
 position = Vector2(42.000004, 42)
 scale = Vector2(0.640625, 0.671875)
 texture = ExtResource("1_fw12v")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
