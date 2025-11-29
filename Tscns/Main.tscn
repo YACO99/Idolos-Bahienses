@@ -1,7 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://b56u06swrj8be"]
+[gd_scene load_steps=17 format=3 uid="uid://b56u06swrj8be"]
 
 [ext_resource type="Script" uid="uid://doun3lmdhyls7" path="res://Codigos/Main.cs" id="1_ojdui"]
 [ext_resource type="Texture2D" uid="uid://cjjopxt8jdhv2" path="res://icon.svg" id="2_4m062"]
+[ext_resource type="Texture2D" uid="uid://blakw8cqc4jmp" path="res://Assets/Asset_Fondo.png" id="2_i7qol"]
+[ext_resource type="Texture2D" uid="uid://b3y5icdjlshse" path="res://Assets/Asset_Nube1.png" id="3_563ux"]
+[ext_resource type="Texture2D" uid="uid://dm7f06tyyw5b2" path="res://Assets/Asset_Nube2.png" id="4_sw4ju"]
+[ext_resource type="Texture2D" uid="uid://criqs5w3p87g0" path="res://Assets/Asset_Nube3.png" id="5_2bujf"]
+[ext_resource type="Texture2D" uid="uid://blvoas1dkpa53" path="res://Assets/Asset_Nube4.png" id="6_exjg5"]
+[ext_resource type="Texture2D" uid="uid://dsg6u3u7ds3gx" path="res://Assets/Asset_Ciudad1.png" id="7_umhy0"]
+[ext_resource type="Texture2D" uid="uid://cuvn8836eadud" path="res://Assets/Asset_Ciudad2.png" id="8_jteen"]
+[ext_resource type="Texture2D" uid="uid://ch1mtw2a8vf1l" path="res://Assets/Asset_Ciudad3.png" id="9_1u6vm"]
+[ext_resource type="Texture2D" uid="uid://mr46vastgvop" path="res://Assets/Asset_Calle.png" id="10_hgq2n"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ojdui"]
 frequency = 0.0213
@@ -29,6 +38,110 @@ script = ExtResource("1_ojdui")
 [node name="Sprite2D" type="Sprite2D" parent="Map"]
 texture = SubResource("NoiseTexture2D_ojdui")
 centered = false
+
+[node name="AssetFondo" type="Sprite2D" parent="Map"]
+position = Vector2(959, 466)
+texture = ExtResource("2_i7qol")
+
+[node name="AssetFondo" type="Sprite2D" parent="Map/AssetFondo"]
+position = Vector2(1919, -1)
+texture = ExtResource("2_i7qol")
+
+[node name="AssetFondo2" type="Sprite2D" parent="Map/AssetFondo"]
+position = Vector2(3836, -1)
+texture = ExtResource("2_i7qol")
+
+[node name="AssetFondo" type="Sprite2D" parent="Map/AssetFondo/AssetFondo2"]
+position = Vector2(1919, -1)
+texture = ExtResource("2_i7qol")
+
+[node name="AssetNube1" type="Sprite2D" parent="Map"]
+position = Vector2(379, -32)
+texture = ExtResource("3_563ux")
+
+[node name="AssetNube2" type="Sprite2D" parent="Map"]
+position = Vector2(1334, 29)
+texture = ExtResource("4_sw4ju")
+
+[node name="AssetNube3" type="Sprite2D" parent="Map"]
+position = Vector2(2314, -1)
+texture = ExtResource("5_2bujf")
+
+[node name="AssetNube4" type="Sprite2D" parent="Map"]
+position = Vector2(3450, -1)
+texture = ExtResource("6_exjg5")
+
+[node name="AssetNube1" type="Sprite2D" parent="Map/AssetNube4"]
+position = Vector2(879, -23)
+texture = ExtResource("3_563ux")
+
+[node name="AssetNube2" type="Sprite2D" parent="Map/AssetNube4"]
+position = Vector2(1834, 38)
+texture = ExtResource("4_sw4ju")
+
+[node name="AssetNube3" type="Sprite2D" parent="Map/AssetNube4"]
+position = Vector2(2814, 8)
+texture = ExtResource("5_2bujf")
+
+[node name="AssetNube4" type="Sprite2D" parent="Map/AssetNube4"]
+position = Vector2(3950, 8)
+texture = ExtResource("6_exjg5")
+
+[node name="AssetCiudad1" type="Sprite2D" parent="Map"]
+position = Vector2(959, 223)
+texture = ExtResource("7_umhy0")
+
+[node name="AssetCiudad1" type="Sprite2D" parent="Map/AssetCiudad1"]
+position = Vector2(1921, 23)
+texture = ExtResource("7_umhy0")
+
+[node name="AssetCiudad1" type="Sprite2D" parent="Map/AssetCiudad1/AssetCiudad1"]
+position = Vector2(1921, 23)
+texture = ExtResource("7_umhy0")
+
+[node name="AssetCiudad1" type="Sprite2D" parent="Map/AssetCiudad1/AssetCiudad1/AssetCiudad1"]
+position = Vector2(1921, 23)
+texture = ExtResource("7_umhy0")
+
+[node name="AssetCiudad2" type="Sprite2D" parent="Map"]
+position = Vector2(968, 197)
+texture = ExtResource("8_jteen")
+
+[node name="AssetCiudad2" type="Sprite2D" parent="Map/AssetCiudad2"]
+position = Vector2(1926, 4)
+texture = ExtResource("8_jteen")
+
+[node name="AssetCiudad3" type="Sprite2D" parent="Map"]
+position = Vector2(974, 206)
+texture = ExtResource("9_1u6vm")
+
+[node name="AssetCiudad4" type="Sprite2D" parent="Map"]
+position = Vector2(2893, 194)
+texture = ExtResource("9_1u6vm")
+
+[node name="AssetCiudad4" type="Sprite2D" parent="Map/AssetCiudad4"]
+position = Vector2(1924, 1)
+texture = ExtResource("9_1u6vm")
+
+[node name="AssetCiudad4" type="Sprite2D" parent="Map/AssetCiudad4/AssetCiudad4"]
+position = Vector2(1924, 1)
+texture = ExtResource("9_1u6vm")
+
+[node name="AssetCalle" type="Sprite2D" parent="Map"]
+position = Vector2(961, 562)
+texture = ExtResource("10_hgq2n")
+
+[node name="AssetCalle2" type="Sprite2D" parent="Map"]
+position = Vector2(2881, 562)
+texture = ExtResource("10_hgq2n")
+
+[node name="AssetCalle3" type="Sprite2D" parent="Map"]
+position = Vector2(4796, 565)
+texture = ExtResource("10_hgq2n")
+
+[node name="AssetCalle4" type="Sprite2D" parent="Map"]
+position = Vector2(6709, 565)
+texture = ExtResource("10_hgq2n")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
