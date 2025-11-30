@@ -7,12 +7,13 @@
 script = ExtResource("1_xwfdb")
 
 [node name="Pidgeo" parent="." instance=ExtResource("2_pcrhm")]
+position = Vector2(-143, -63)
 
 [node name="Pidgeo4" parent="." instance=ExtResource("2_pcrhm")]
-position = Vector2(241, 58)
+position = Vector2(98, -5)
 
 [node name="Pidgeo3" parent="." instance=ExtResource("2_pcrhm")]
-position = Vector2(39, 214)
+position = Vector2(-104, 151)
 
 [node name="Pidgeo2" parent="." instance=ExtResource("2_pcrhm")]
-position = Vector2(274, 271)
+position = Vector2(131, 208)
