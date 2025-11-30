@@ -17,7 +17,7 @@ public partial class Main : Node
 	RandomNumberGenerator random;
 	int idA = 0;
 	public int Puntaje = 0;
-    public override void _Ready()
+	public override void _Ready()
 	{
 		random = new RandomNumberGenerator();
 		random.Randomize();

@@ -1,5 +1,6 @@
 extends Node
 @export var PauseMenu: TextureRect
+@export var ButtonQuit: Button
 
 func _ready():
 	get_tree().paused = false
@@ -15,5 +16,12 @@ func toggle_pause():
 	get_tree().paused = not is_paused
 	PauseMenu.visible = not is_paused
 
-func _on_Button_pressed () -> void:
+
+func _on_button_quit_pressed() -> void:
 	get_tree().quit()
+	pass # Replace with function body.
+
+func _on_butto_retry_pressed() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+	pass # Replace with function body.

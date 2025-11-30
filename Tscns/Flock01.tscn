@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnv1t0eq6kcf0"]
+
+[ext_resource type="Script" uid="uid://d0s3c7hmpu1uc" path="res://Codigos/Flock.gd" id="1_xetev"]
+[ext_resource type="PackedScene" uid="uid://d2bww7m8u3cko" path="res://Tscns/Pidgeo.tscn" id="2_srfcu"]
+
+[node name="Flock" type="Node2D"]
+script = ExtResource("1_xetev")
+
+[node name="Pidgeo" parent="." instance=ExtResource("2_srfcu")]
+
+[node name="Pidgeo4" parent="." instance=ExtResource("2_srfcu")]
+position = Vector2(241, 58)
+
+[node name="Pidgeo3" parent="." instance=ExtResource("2_srfcu")]
+position = Vector2(39, 214)
+
+[node name="Pidgeo2" parent="." instance=ExtResource("2_srfcu")]
+position = Vector2(274, 271)
