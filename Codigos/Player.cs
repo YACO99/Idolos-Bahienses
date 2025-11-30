@@ -50,19 +50,37 @@ public partial class Player : CharacterBody2D
             velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, Speed);
 		}
-		if(FStop>0)
-        {
+		if (FStop > 0)
+		{
 			FStop -= delta;
 			if (FStop < 0)
 				FStop = 0;
+		}
+		else
+		{
+			if (Input.IsActionJustPressed(keys[4 + t]))
+            {
+                FStop = 0.25;
+                anim.Play("Golpe");
+            }
+            else if (Input.IsActionJustPressed(keys[5 + t]))
+			{
+				FStop = 0.5;
+                anim.Play("Evadir");
+
+            }
         }
 
-		Velocity = velocity;
+			Velocity = velocity;
 		MoveAndSlide();
 	}
 	public void Damage()
 	{
-        anim.Play("Daño");
-		FStop = 0.5;
+		if (FStop == 0)
+		{
+			anim.Play("Daño");
+			FStop = 0.5;
+			//vida--
+		}
     }
 }

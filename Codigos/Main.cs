@@ -68,7 +68,7 @@ public partial class Main : Node
                     TimeDelay = 0;
                 }
                 var en=GetTree().GetNodesInGroup("enemigo");
-                if (en.Count==0 && TimeDelay==0 && !boMap)
+                if (en.Count==0 && TimeDelay==0 && !boMap && !Flecha.Visible)
                     TimeDelay = 4;
 
             }
