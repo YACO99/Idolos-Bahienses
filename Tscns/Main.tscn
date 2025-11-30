@@ -8,7 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://cuvn8836eadud" path="res://Imagenes/Fondo/Asset_Ciudad2.png" id="4_wat6t"]
 [ext_resource type="Texture2D" uid="uid://ch1mtw2a8vf1l" path="res://Imagenes/Fondo/Asset_Ciudad3.png" id="5_7su1v"]
 [ext_resource type="Texture2D" uid="uid://blakw8cqc4jmp" path="res://Imagenes/Fondo/Asset_Fondo.png" id="6_i7qol"]
-[ext_resource type="AudioStream" uid="uid://bgnwkpha3e6wk" path="res://Sonidos/DebbieGedonMain.wav" id="9_wat6t"]
+
+[ext_resource type="Script" uid="uid://bqdb48jv8kbk4" path="res://Tscns/PauseMenu.gd" id="9_wat6t"]
+[ext_resource type="Texture2D" uid="uid://dplxc020x6ces" path="res://Imagenes/Menú Pausa/Asset_Menu pausa.png" id="10_7su1v"]
+[ext_resource type="Texture2D" uid="uid://bwwpv5ydij4a0" path="res://Imagenes/Menú Pausa/Asset_Boton reintentar.png" id="11_563ux"]
+[ext_resource type="Texture2D" uid="uid://dyn4vgefgha3h" path="res://Imagenes/Menú Pausa/Asset_Boton mute.png" id="12_sw4ju"]
+[ext_resource type="Texture2D" uid="uid://bnqwbaxuia8es" path="res://Imagenes/Menú Pausa/Asset_Boton salir.png" id="13_sw4ju"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4m062"]
 size = Vector2(354.6875, 725.5)
@@ -181,9 +186,60 @@ text = "Creditos: 5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_wat6t")
 autoplay = true
+
+[node name="PauseMenu" type="Control" parent="." node_paths=PackedStringArray("PauseMenu")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_wat6t")
+PauseMenu = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36200002
+anchor_top = 0.23
+anchor_right = 0.638
+anchor_bottom = 0.77000004
+offset_top = -0.40000916
+offset_right = 0.040039063
+offset_bottom = 0.39996338
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_7su1v")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="TextureButton" parent="PauseMenu/TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("11_563ux")
+
+[node name="Button2" type="Button" parent="PauseMenu/TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+icon = ExtResource("12_sw4ju")
+flat = true
+
+[node name="Button3" type="Button" parent="PauseMenu/TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+icon = ExtResource("13_sw4ju")
+flat = true
 
 [connection signal="body_entered" from="Cam/Next" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Cam/End" to="." method="_on_end_body_entered"]

@@ -12,7 +12,7 @@ public partial class Main : Node
 	double TimeDelay = 0;
 	public bool boMap = false;
 	public Node2D Cam;
-    public Camera2D Camera;
+	public Camera2D Camera;
 	public float pixeles = 0;
 	RandomNumberGenerator random;
 	int idA = 0;
@@ -40,28 +40,28 @@ public partial class Main : Node
 		areaNextEnd = Cam.GetNode<CollisionShape2D>("End/CollisionShape2D");
 	}
 
-    public override void _Process(double delta)
-    {
-        if (Creditos >= 0)
-        {
-            if (P1 == null && Input.IsActionJustPressed("U") && !boMap && Creditos > 0)
-            {
-                Creditos--;
-                Spawn(1);
-            }
-            if (P1 != null && P2 != null)
-            {
-                if (P1.Position.Y < P2.Position.Y)
-                {
-                    P1.ZIndex = 10;
-                    P2.ZIndex = 20;
-                }
-                else if (P2.Position.Y < P1.Position.Y)
-                {
-                    P1.ZIndex = 20;
-                    P2.ZIndex = 10;
-                }
-            }
+	public override void _Process(double delta)
+	{
+		if (Creditos >= 0)
+		{
+			if (P1 == null && Input.IsActionJustPressed("U") && !boMap && Creditos > 0)
+			{
+				Creditos--;
+				Spawn(1);
+			}
+			if (P1 != null && P2 != null)
+			{
+				if (P1.Position.Y < P2.Position.Y)
+				{
+					P1.ZIndex = 10;
+					P2.ZIndex = 20;
+				}
+				else if (P2.Position.Y < P1.Position.Y)
+				{
+					P1.ZIndex = 20;
+					P2.ZIndex = 10;
+				}
+			}
 			if (P1 != null || P2 != null)
 			{
 				Vector2 p = Vector2.Zero;
@@ -102,8 +102,8 @@ public partial class Main : Node
 
 			}
 			else {
-                Camera.GlobalPosition += Spawn1.Position - Camera.GlobalPosition;
-            }
+				Camera.GlobalPosition += Spawn1.Position - Camera.GlobalPosition;
+			}
 			if (P2 == null && Input.IsActionJustPressed("3") && !boMap && Creditos>0)
 			{
 				Creditos--;
@@ -116,7 +116,7 @@ public partial class Main : Node
 			Creditos = 5;
 			Puntaje = 0;
 
-        }
+		}
 	}
 
 	public void Spawn(int i)
@@ -158,9 +158,9 @@ public partial class Main : Node
 			if (P2 != null)
 			{
 				P2.FStop = 0.2;
-                P2.anim.CallDeferred(AnimationPlayer.MethodName.Play);
-            }
-            boMap = false;
+				P2.anim.CallDeferred(AnimationPlayer.MethodName.Play);
+			}
+			boMap = false;
 			pixeles = Camera.GlobalPosition.X;
 			var r=random.RandiRange(1,4);
 			PackedScene temp=null;
@@ -169,41 +169,41 @@ public partial class Main : Node
 				case 1:
 					temp = BaseFlock1;
 					break;
-                case 2:
-                    temp = BaseFlock2;
-                    break;
-                case 3:
-                    temp = BaseFlock3;
-                    break;
-                case 4:
-                    temp = BaseFlock4;
-                    break;
-            }
-            var f = temp.Instantiate<Node2D>();
-            f.GlobalPosition = Nido.GlobalPosition;
-            CallDeferred(Node.MethodName.AddChild, f);
-        }
-    }
+				case 2:
+					temp = BaseFlock2;
+					break;
+				case 3:
+					temp = BaseFlock3;
+					break;
+				case 4:
+					temp = BaseFlock4;
+					break;
+			}
+			var f = temp.Instantiate<Node2D>();
+			f.GlobalPosition = Nido.GlobalPosition;
+			CallDeferred(Node.MethodName.AddChild, f);
+		}
+	}
 
 	public void _on_area_2d_body_entered(Node2D node)
 	{
 		if (node.IsInGroup("player"))
 		{
 			idA=((Player)node).id;
-            Flecha.CallDeferred(Sprite2D.MethodName.SetVisible, false);
+			Flecha.CallDeferred(Sprite2D.MethodName.SetVisible, false);
 			areaNext.CallDeferred(CollisionShape2D.MethodName.SetDisabled, true);
 			areaNextEnd.CallDeferred(CollisionShape2D.MethodName.SetDisabled, false);
 			if (P1 != null)
 			{
 				P1.FStop = 10;
-                P1.anim.CallDeferred(AnimationPlayer.MethodName.Play);
-            }
-            if (P2 != null)
+				P1.anim.CallDeferred(AnimationPlayer.MethodName.Play);
+			}
+			if (P2 != null)
 			{
 				P2.FStop = 10;
-                P2.anim.CallDeferred(AnimationPlayer.MethodName.Pause);
-            }
-            boMap = true;
+				P2.anim.CallDeferred(AnimationPlayer.MethodName.Pause);
+			}
+			boMap = true;
 		}
 
 	}
