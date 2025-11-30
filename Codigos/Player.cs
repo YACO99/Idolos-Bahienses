@@ -55,7 +55,17 @@ public partial class Player : CharacterBody2D
 		{
 			FStop -= delta;
 			if (FStop < 0)
-				FStop = 0;
+			{
+				if (Vidas == 0)
+				{
+					QueueFree();
+					if (id == 1)
+						God.Lambda.Main.P1 = null;
+					else
+						God.Lambda.Main.P2 = null;
+				}
+                FStop = 0;
+			}
 		}
 		else
 		{
@@ -77,11 +87,11 @@ public partial class Player : CharacterBody2D
 	}
 	public void Damage()
 	{
-		if (FStop == 0)
+		if (FStop == 0 && Vidas > 1)
 		{
 			anim.Play("Daño");
 			FStop = 0.5;
-			//vida--
+			Vidas--;
 		}
     }
 }

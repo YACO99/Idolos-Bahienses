@@ -4,7 +4,7 @@ public partial class Main : Node
 {
 	public int Creditos = 5;
 	PackedScene BasePlayer,BaseFlock;
-	Player P1=null,P2=null;
+	public Player P1=null,P2=null;
 	Node2D  Map, Spawn1, Spawn2, Nido, Flecha;
 	Label CrediLabel;
 	Control ContrMain;
@@ -105,8 +105,7 @@ public partial class Main : Node
 		}
 		else
 		{
-			//Fin del juego, musica mala
-			//10 segundos, pedir coins caso contraio reiniciar escena.
+			
 		}
 	}
 
