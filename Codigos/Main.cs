@@ -117,7 +117,7 @@ public partial class Main : Node
 			Puntaje = 0;
 			contador = 0;
 
-        }
+		}
 	}
 
 	public void Spawn(int i)
@@ -183,8 +183,8 @@ public partial class Main : Node
 			var f = temp.Instantiate<Node2D>();
 			f.GlobalPosition = Nido.GlobalPosition;
 			CallDeferred(Node.MethodName.AddChild, f);
-            contador++;
-        }
+			contador++;
+		}
 	}
 
 	public void _on_area_2d_body_entered(Node2D node)

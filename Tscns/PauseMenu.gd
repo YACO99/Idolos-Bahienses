@@ -1,20 +1,28 @@
 extends Node
 @export var PauseMenu: TextureRect
 @export var ButtonQuit: Button
+var is_paused = false
 
 func _ready():
 	get_tree().paused = false
 	PauseMenu.visible = false
 	set_process_mode(Node.PROCESS_MODE_ALWAYS)
 
-func _input(event:InputEvent) -> void:
-	if Input.is_action_just_pressed ("ui_cancel"):
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
 		toggle_pause()
 
-func toggle_pause():
-	var is_paused = get_tree().is_paused()
-	get_tree().paused = not is_paused
-	PauseMenu.visible = not is_paused
+
+func toggle_pause():	
+	print(is_paused)
+	if is_paused: 
+		is_paused = false
+	else:
+		is_paused = true
+	get_tree().paused = is_paused
+	if $TextureRect.visible == true:
+		$TextureRect.visible = false
+	$TextureRect.visible = is_paused
 
 
 func _on_button_quit_pressed() -> void:
