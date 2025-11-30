@@ -26,14 +26,13 @@ public partial class Player : CharacterBody2D
 		{
 			id = 2;
 			t = 7;
-			//Modulate = Colors.Red;
+			Modulate = Colors.Blue;
 			CollisionLayer = 2;
 			CollisionMask = 2;
 		}
 		else
 		{
 			id = 1;
-            //Modulate = Colors.Green;
         }
     }
 	public override void _PhysicsProcess(double delta)

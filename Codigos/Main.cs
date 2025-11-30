@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 public partial class Main : Node
 {
@@ -17,6 +18,7 @@ public partial class Main : Node
 	RandomNumberGenerator random;
 	int idA = 0, contador=0;
 	public int Puntaje = 0;
+	Node2D boss;
 	public override void _Ready()
 	{
 		random = new RandomNumberGenerator();
@@ -113,12 +115,20 @@ public partial class Main : Node
 		if (Creditos == 0 && P1 == null && P2 == null)
 		{
 			//Fin
+			if (boss != null)
+				boss.QueueFree();
 			Creditos = 5;
 			Puntaje = 0;
 			contador = 0;
-
+            GetNode<AudioStreamPlayer>("Audio1").Play();
+            GetNode<AudioStreamPlayer>("Audio2").Stop();
+            GetNode<Node2D>("Map").Visible = true;
+            GetNode<Node2D>("Cam").Visible = true;
+            GetNode<Node2D>("Map2").Visible = false;
+            GetNode<Node2D>("Cam2").Visible = false;
+            GetNode<Sprite2D>("WIN").Visible = false;
         }
-	}
+    }
 
 	public void Spawn(int i)
 	{
@@ -165,25 +175,40 @@ public partial class Main : Node
 			pixeles = Camera.GlobalPosition.X;
 			var r=random.RandiRange(1,4);
 			PackedScene temp=null;
-			switch (r)
-			{
-				case 1:
-					temp = BaseFlock1;
-					break;
-				case 2:
-					temp = BaseFlock2;
-					break;
-				case 3:
-					temp = BaseFlock3;
-					break;
-				case 4:
-					temp = BaseFlock4;
-					break;
-			}
-			var f = temp.Instantiate<Node2D>();
-			f.GlobalPosition = Nido.GlobalPosition;
-			CallDeferred(Node.MethodName.AddChild, f);
+			
             contador++;
+			if (contador>3 && boss==null)
+			{
+                bossResourceLoader.Load<PackedScene>("res://Tscns/Boss combate.tscn").Instantiate();
+				AddChild(boss);
+				GetNode<AudioStreamPlayer>("Audio1").Stop();
+				GetNode<AudioStreamPlayer>("Audio2").Play();
+				GetNode<Node2D>("Map").Visible = false;
+				GetNode<Node2D>("Cam").Visible = false;
+				GetNode<Node2D>("Map2").Visible = true;
+				GetNode<Node2D>("Cam2").Visible = true;
+			}
+			else
+			{
+                switch (r)
+                {
+                    case 1:
+                        temp = BaseFlock1;
+                        break;
+                    case 2:
+                        temp = BaseFlock2;
+                        break;
+                    case 3:
+                        temp = BaseFlock3;
+                        break;
+                    case 4:
+                        temp = BaseFlock4;
+                        break;
+                }
+                var f = temp.Instantiate<Node2D>();
+                f.GlobalPosition = Nido.GlobalPosition;
+                CallDeferred(Node.MethodName.AddChild, f);
+            }
         }
 	}
 
@@ -209,4 +234,9 @@ public partial class Main : Node
 		}
 
 	}
+
+    internal void WIN()
+    {
+		GetNode<Sprite2D>("WIN").Visible = true;
+    }
 }
