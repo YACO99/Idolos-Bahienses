@@ -5,24 +5,28 @@ public partial class Main : Node
 	public int Creditos = 5;
 	PackedScene BasePlayer,BaseFlock;
 	Player P1=null,P2=null;
-	Node2D  Spawn1, Spawn2, Nido, Flecha;
+	Node2D  Map, Spawn1, Spawn2, Nido, Flecha;
 	Label CrediLabel;
 	Control ContrMain;
 	CollisionShape2D areaNext, areaNextEnd;
 	double TimeDelay = 0;
-	bool boMap = false;
-	Camera2D Cam;
-	
-	public override void _Ready()
+	public bool boMap = false;
+	public Node2D Cam;
+    public Camera2D Camera;
+	public float pixeles = 0;
+
+    public override void _Ready()
 	{
 		BasePlayer = ResourceLoader.Load<PackedScene>("res://Tscns/Player.tscn");
 		BaseFlock = ResourceLoader.Load<PackedScene>("res://Tscns/Flock"+1+".tscn");
-		Cam = GetNode<Camera2D>("Cam");
+		Cam = GetNode<Node2D>("Cam");
+		Camera = Cam.GetNode<Camera2D>("Cam");
+		Map = GetNode<Node2D>("Map");
 		Flecha = Cam.GetNode<Node2D>("Flecha");
 		Spawn1 = Cam.GetNode<Node2D>("Spawn1");
 		Spawn2 = Cam.GetNode<Node2D>("Spawn2");
 		Nido = Cam.GetNode<Node2D>("nido");
-		ContrMain = GetNode<Control>("Control");
+		ContrMain = Cam.GetNode<Control>("Layer/Control");
 		CrediLabel = ContrMain.GetNode<Label>("CrediLabel");
 		CrediLabel.Text = "Creditos: 5";
 		areaNext = Cam.GetNode<CollisionShape2D>("Next/CollisionShape2D");
@@ -53,9 +57,27 @@ public partial class Main : Node
             }
             if (P1 != null || P2 != null)
             {
+				Vector2 p = Vector2.Zero;
+				int l = 0;
+				if (P1 != null)
+				{
+					l++;
+					p += P1.GlobalPosition;
+				}
+                if (P2 != null)
+                {
+					l++;
+					p += P2.GlobalPosition;
+                }
+				p /= l;	
+				Camera.GlobalPosition += p - Camera.GlobalPosition;
                 if (boMap)
                 {
-                    Cam.Position += (float)delta*980*Vector2.Right;
+					if(P1!=null)
+						P1.Position += (float)delta*980*Vector2.Left;
+                    if (P2 != null)
+                        P2.Position += (float)delta*980*Vector2.Left;
+					Map.Position += (float)delta * 980 * Vector2.Left;
                 }
                 if (TimeDelay > 0)
                     TimeDelay -= delta;
@@ -69,7 +91,7 @@ public partial class Main : Node
                 }
                 var en=GetTree().GetNodesInGroup("enemigo");
                 if (en.Count==0 && TimeDelay==0 && !boMap && !Flecha.Visible)
-                    TimeDelay = 4;
+                    TimeDelay = 2;
 
 			}
 			if (P2 == null && Input.IsActionJustPressed("3") && !boMap)
@@ -127,9 +149,12 @@ public partial class Main : Node
 				P2.anim.Play();
 			}
 			boMap = false;
-			
-		}
-	}
+			pixeles = Camera.GlobalPosition.X;
+            var f = BaseFlock.Instantiate<Node2D>();
+            f.GlobalPosition = Nido.GlobalPosition;
+            CallDeferred(Node.MethodName.AddChild, f);
+        }
+    }
 
 	public void _on_area_2d_body_entered(Node2D node)
 	{
@@ -150,9 +175,6 @@ public partial class Main : Node
 				P2.anim.Pause();
 			}
 			boMap = true;
-			var f = BaseFlock.Instantiate<Node2D>();
-			f.GlobalPosition = Nido.GlobalPosition;
-			CallDeferred(Node.MethodName.AddChild, f);
 		}
 
 	}
