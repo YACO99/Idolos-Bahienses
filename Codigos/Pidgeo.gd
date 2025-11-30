@@ -5,10 +5,13 @@ extends Area2D
 @export var spawn_interval := 1
 @export var spawn_radius := 600
 var is_diving:bool = false
-
+@export var muerto:bool = false
+@onready var a := $anim
 var player = null
 
 func _physics_process(_delta):
+	if muerto:
+		queue_free()
 	player = get_tree().get_nodes_in_group("player")
 	if len(player) > 0:
 		var dir0 = player[0].global_position+Vector2.UP*100 - global_position
@@ -29,7 +32,7 @@ func _physics_process(_delta):
 func _on_body_entered(t):              #Función para que la paloma reconozca cuando colisiona con el jugador
 	if t.is_in_group("player"):
 		t.call("Damage")
-		queue_free()
+		a.play("Muerte")
 
 func start_attack():
 	is_diving = true

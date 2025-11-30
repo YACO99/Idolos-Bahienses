@@ -25,14 +25,16 @@ public partial class Player : CharacterBody2D
 		{
 			id = 2;
 			t = 7;
+			Modulate = Colors.Red;
 			CollisionLayer = 2;
 			CollisionMask = 2;
 		}
 		else
 		{
 			id = 1;
-		}
-	}
+            Modulate = Colors.Green;
+        }
+    }
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
@@ -98,6 +100,7 @@ public partial class Player : CharacterBody2D
 	}
 	public void Damage()
 	{
+		God.Lambda.Main.Puntaje++;
 		if (FStop == 0 && Vidas > 0)
 		{
 			anim.Play("Daño");

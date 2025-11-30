@@ -16,7 +16,7 @@ public partial class Main : Node
 	public float pixeles = 0;
 	RandomNumberGenerator random;
 	int idA = 0;
-	public int puntaje = 0;
+	public int Puntaje = 0;
     public override void _Ready()
 	{
 		random = new RandomNumberGenerator();

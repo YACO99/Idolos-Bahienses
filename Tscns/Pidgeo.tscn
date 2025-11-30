@@ -1,15 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2bww7m8u3cko"]
+[gd_scene load_steps=13 format=3 uid="uid://d2bww7m8u3cko"]
 
 [ext_resource type="Script" uid="uid://bluvlvht00yjq" path="res://Codigos/Pidgeo.gd" id="1_7enb5"]
 [ext_resource type="Texture2D" uid="uid://dsypdcr14dayu" path="res://Imagenes/Paloma Assets/palomas01.png" id="2_4l0d4"]
+[ext_resource type="Texture2D" uid="uid://jfl72k2mw8ov" path="res://Imagenes/BOOM.png" id="2_s6lo3"]
 [ext_resource type="Texture2D" uid="uid://dhed2cqgfcnjb" path="res://Imagenes/Paloma Assets/palomas02.png" id="3_r6gcw"]
 [ext_resource type="Texture2D" uid="uid://dayil64fbloa0" path="res://Imagenes/Paloma Assets/palomas03.png" id="4_s6lo3"]
+[ext_resource type="AudioStream" uid="uid://c321fqeqcja04" path="res://Sonidos/PidgeonDeath.wav" id="5_r6gcw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7enb5"]
-size = Vector2(92, 96)
+size = Vector2(63.5, 102.5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r6gcw"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s6lo3")
+}],
+"loop": true,
+"name": &"Muerto",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_4l0d4")
@@ -25,19 +35,240 @@ animations = [{
 "speed": 9.0
 }]
 
+[sub_resource type="Animation" id="Animation_r6gcw"]
+resource_name = "1"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.56666666, 1.3333334, 1.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(11.0330715, -72.89787), Vector2(-7.8669252, -23.69787), Vector2(46.63307, -23.197872), Vector2(11.0330715, -72.89787)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.2, 0.2)]
+}
+
+[sub_resource type="Animation" id="Animation_s6lo3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3.9999962, 1.9999962)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:muerto")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.75492966, 0.7547615)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimatedSprite2D:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Muerto"]
+}
+
+[sub_resource type="Animation" id="Animation_db4fi"]
+resource_name = "Muerte"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:muerto")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.46666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 2.3326035]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.15295297, 0.42788398),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(0.755, -0.755), Vector2(0.22865371, -0.2266388)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimatedSprite2D:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Muerto"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_db4fi"]
+_data = {
+&"1": SubResource("Animation_r6gcw"),
+&"Muerte": SubResource("Animation_db4fi"),
+&"RESET": SubResource("Animation_s6lo3")
+}
+
 [node name="Pidgeo" type="Area2D" groups=["enemigo"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_7enb5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(14, -48)
 shape = SubResource("RectangleShape2D_7enb5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-3.9999962, 1.9999962)
-scale = Vector2(0.2, 0.2)
+scale = Vector2(-0.75492966, 0.7547615)
 sprite_frames = SubResource("SpriteFrames_r6gcw")
+animation = &"Muerto"
 autoplay = "default"
-frame_progress = 0.6521516
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_r6gcw")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_db4fi")
+}
+autoplay = "1"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
