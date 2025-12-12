@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://d2bww7m8u3cko"]
+[gd_scene load_steps=15 format=3 uid="uid://d2bww7m8u3cko"]
 
 [ext_resource type="Script" uid="uid://bluvlvht00yjq" path="res://Codigos/Pidgeo.gd" id="1_7enb5"]
 [ext_resource type="Texture2D" uid="uid://dsypdcr14dayu" path="res://Imagenes/Paloma Assets/palomas01.png" id="2_4l0d4"]
+[ext_resource type="Texture2D" uid="uid://dm70brewb4q7f" path="res://Imagenes/Paloma Assets/paloma radioactiva 1.0.png" id="2_db4fi"]
 [ext_resource type="Texture2D" uid="uid://jfl72k2mw8ov" path="res://Imagenes/BOOM.png" id="2_s6lo3"]
 [ext_resource type="Texture2D" uid="uid://dhed2cqgfcnjb" path="res://Imagenes/Paloma Assets/palomas02.png" id="3_r6gcw"]
 [ext_resource type="Texture2D" uid="uid://dayil64fbloa0" path="res://Imagenes/Paloma Assets/palomas03.png" id="4_s6lo3"]
@@ -12,6 +13,14 @@ size = Vector2(63.5, 102.5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r6gcw"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_db4fi")
+}],
+"loop": true,
+"name": &"Caida",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_s6lo3")
@@ -86,81 +95,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.2, 0.2)]
-}
-
-[sub_resource type="Animation" id="Animation_s6lo3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-3.9999962, 1.9999962)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Audio:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:muerto")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AnimatedSprite2D:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-0.75492966, 0.7547615)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AnimatedSprite2D:animation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Muerto"]
 }
 
 [sub_resource type="Animation" id="Animation_db4fi"]
@@ -239,9 +173,113 @@ tracks/5/keys = {
 "values": [&"Muerto"]
 }
 
+[sub_resource type="Animation" id="Animation_s6lo3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3.9999962, 1.9999962)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:muerto")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.75492966, 0.7547615)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimatedSprite2D:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Muerto"]
+}
+
+[sub_resource type="Animation" id="Animation_at5yc"]
+resource_name = "2"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Caida"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.73333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.059341196, 0.5235987755982988]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_db4fi"]
 _data = {
 &"1": SubResource("Animation_r6gcw"),
+&"2": SubResource("Animation_at5yc"),
 &"Muerte": SubResource("Animation_db4fi"),
 &"RESET": SubResource("Animation_s6lo3")
 }
@@ -252,7 +290,7 @@ collision_mask = 3
 script = ExtResource("1_7enb5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(14, -48)
+position = Vector2(34, -55)
 shape = SubResource("RectangleShape2D_7enb5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

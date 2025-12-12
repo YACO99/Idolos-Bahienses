@@ -35,4 +35,9 @@ func _on_butto_retry_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_button_mute_pressed() -> void:
-	$"../../AudioStreamPlayer".stop()
+	if $"../../Audio1".volume_db==0:
+		$"../../Audio1".volume_db=-80
+		$"../../Audio2".volume_db=-80
+	else:
+		$"../../Audio1".volume_db=0
+		$"../../Audio2".volume_db=0
